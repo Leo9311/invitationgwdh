@@ -1,14 +1,182 @@
 <!doctype html>
 <html lang="ko">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-    <meta name="generator" content="Hugo 0.84.0">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>모바일 청첩장 샘플</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --accent:#d97706; /* amber-600 */
+      --muted:#6b7280; /* gray-500 */
+      --bg:#fff8f1;
+      --card:#ffffff;
+    }
+    *{box-sizing:border-box}
+    body{font-family:'Nanum Gothic',system-ui,-apple-system,"Segoe UI",Roboto,'Helvetica Neue',Arial; margin:0; background:linear-gradient(180deg,#fff 0%, #fff8f1 100%); color:#111}
+    .wrapper{max-width:720px;margin:0 auto;min-height:100vh;display:flex;flex-direction:column}
 
-  </head>
-  <body>
-    대호 가원 결혼식 모바일 청첩장
-  </body>
+    header{padding:28px 20px 8px;display:flex;align-items:center;gap:12px}
+    .logo{width:56px;height:56px;border-radius:12px;overflow:hidden;flex:0 0 56px;box-shadow:0 6px 18px rgba(16,24,40,0.06)}
+    .logo img{width:100%;height:100%;object-fit:cover}
+    h1{font-family:'Playfair Display',serif;margin:0;font-size:18px}
+    p.lead{margin:4px 0 0;color:var(--muted);font-size:13px}
+
+    .hero{padding:16px;display:flex;gap:12px;align-items:center}
+    .photo{flex:0 0 120px;border-radius:12px;overflow:hidden;box-shadow:0 8px 30px rgba(16,24,40,0.08)}
+    .photo img{display:block;width:120px;height:120px;object-fit:cover}
+    .detail{flex:1}
+    .names{font-family:'Playfair Display',serif;font-size:20px;margin:0}
+    .when{color:var(--muted);font-size:13px;margin-top:6px}
+
+    .card{background:var(--card);margin:12px 16px;border-radius:14px;padding:14px;box-shadow:0 8px 30px rgba(16,24,40,0.06)}
+    .section-title{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+    .section-title h2{margin:0;font-size:15px}
+    .section-content{font-size:14px;color:#111}
+
+    .rsvp-btn{display:block;width:100%;padding:12px;border-radius:10px;border:0;background:var(--accent);color:white;font-weight:700;font-size:15px}
+
+    .map{height:160px;border-radius:10px;overflow:hidden;margin-top:8px}
+    .map iframe{width:100%;height:100%;border:0}
+
+    .info-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    .small{font-size:13px;color:var(--muted)}
+
+    footer{padding:18px 16px 36px;text-align:center;font-size:13px;color:var(--muted)}
+
+    /* Modal */
+    .modal-backdrop{position:fixed;inset:0;background:rgba(2,6,23,0.5);display:none;align-items:center;justify-content:center;padding:20px}
+    .modal{background:white;border-radius:12px;max-width:520px;width:100%;padding:18px}
+    .close{float:right;border:0;background:transparent;font-size:18px}
+
+    /* Mobile-first adjustments */
+    @media(min-width:480px){
+      .hero{padding:20px}
+      .photo{flex:0 0 140px}
+      .photo img{width:140px;height:140px}
+      .card{margin:18px}
+    }
+
+    /* Larger screens -> center card width */
+    @media(min-width:900px){
+      body{background:linear-gradient(180deg,#fff 0%, #fff 0%)}
+      .wrapper{padding:48px 0}
+      .container{max-width:600px;margin:0 auto}
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <header>
+      <div class="logo"><img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=600&auto=format&fit=crop&s=placeholder" alt="logo"></div>
+      <div>
+        <h1>정민 ❤️ 수현의 결혼식</h1>
+        <p class="lead">2026년 5월 16일 토요일 · 오후 2시 / 서울 더하우스예식장</p>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero card">
+        <div class="photo"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=800&auto=format&fit=crop&s=placeholder" alt="couple"></div>
+        <div class="detail">
+          <p class="names">정민 <span style="color:var(--muted);">&amp;</span> 수현</p>
+          <p class="when">초대합니다 — 소중한 자리 함께 해주세요</p>
+          <div style="margin-top:12px" class="info-grid">
+            <div>
+              <div class="small">식장</div>
+              <div>서울 더하우스 예식장</div>
+            </div>
+            <div>
+              <div class="small">주차/오시는길</div>
+              <div>지하1층 주차 가능 / 2호선 역에서 도보 8분</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="card" aria-labelledby="when">
+        <div class="section-title"><h2 id="when">행사 정보</h2></div>
+        <div class="section-content">
+          <strong>예식 일시</strong>
+          <div style="margin:6px 0 12px">2026년 5월 16일 (토) 오후 2시</div>
+
+          <strong>리셉션</strong>
+          <div style="margin:6px 0 12px">예식 후 로비에서 다과가 준비됩니다.</div>
+
+          <button class="rsvp-btn" id="openRsvp">참석 여부 알리기 (RSVP)</button>
+        </div>
+      </section>
+
+      <section class="card" aria-labelledby="place">
+        <div class="section-title"><h2 id="place">찾아오시는 길</h2></div>
+        <div class="section-content">
+          <div class="map" aria-hidden="false">
+            <!-- 실제 배포시에는 Google Maps embed 또는 Naver Maps 사용 -->
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3165.0000000000005!2d127.0000000!3d37.0000000!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0:0x0!2zMzfCnzAnMC4wXiAxMjbCpDAwJTAuMCJX!5e0!3m2!1sko!2skr!4v0000000000000" loading="lazy"></iframe>
+          </div>
+          <div style="margin-top:10px" class="small">주소: 서울시 강남구 테헤란로 12 (예시주소)</div>
+        </div>
+      </section>
+
+      <section class="card" aria-labelledby="gifts">
+        <div class="section-title"><h2 id="gifts">선물 관련</h2></div>
+        <div class="section-content">
+          <div class="small">축하 방법</div>
+          <ul style="margin:8px 0 0;padding-left:18px">
+            <li>현금 봉투는 준비되어 있습니다.</li>
+            <li>카드 또는 모바일 송금은 아래 계좌로 부탁드립니다: 국민은행 123-45-678901 (정민)</li>
+          </ul>
+        </div>
+      </section>
+
+    </main>
+
+    <footer>
+      문의: 010-1234-5678 · 결혼식 당일 원활한 진행을 위해 4월 30일 이전에 참석 여부 알려주세요.
+    </footer>
+  </div>
+
+  <!-- RSVP Modal -->
+  <div id="modal" class="modal-backdrop" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal">
+      <button class="close" id="close">✕</button>
+      <h3 style="margin-top:0">참석 여부</h3>
+      <form id="rsvpForm">
+        <label style="display:block;margin:10px 0;font-size:14px">이름
+          <input name="name" required style="width:100%;padding:10px;margin-top:6px;border-radius:8px;border:1px solid #e5e7eb">
+        </label>
+        <label style="display:block;margin:10px 0;font-size:14px">참석 인원
+          <input name="count" type="number" min="1" value="1" required style="width:100%;padding:10px;margin-top:6px;border-radius:8px;border:1px solid #e5e7eb">
+        </label>
+        <label style="display:block;margin:10px 0;font-size:14px">메시지 (선택)
+          <textarea name="message" rows="3" style="width:100%;padding:10px;margin-top:6px;border-radius:8px;border:1px solid #e5e7eb"></textarea>
+        </label>
+        <button type="submit" style="width:100%;padding:12px;margin-top:8px;border-radius:10px;border:0;background:var(--accent);color:#fff;font-weight:700">제출하기</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    const openBtn = document.getElementById('openRsvp');
+    const modal = document.getElementById('modal');
+    const closeBtn = document.getElementById('close');
+    const form = document.getElementById('rsvpForm');
+
+    function openModal(){ modal.style.display='flex'; modal.setAttribute('aria-hidden','false'); }
+    function closeModal(){ modal.style.display='none'; modal.setAttribute('aria-hidden','true'); }
+
+    openBtn.addEventListener('click', openModal);
+    closeBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', (e)=>{ if(e.target===modal) closeModal(); });
+
+    form.addEventListener('submit', (e)=>{
+      e.preventDefault();
+      const data = new FormData(form);
+      // 실제 배포시에는 여기서 fetch로 서버에 전송하거나 구글폼/슬랙 연동 가능
+      alert(`${data.get('name')}님, 참석신청이 접수되었습니다. 감사합니다!`);
+      closeModal();
+      form.reset();
+    });
+  </script>
+</body>
 </html>
