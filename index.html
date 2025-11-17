@@ -241,24 +241,30 @@
     width: 100%;
   }
 
-  .thumbnails {
-    display: flex;
-    overflow-x: hidden;
-    scroll-behavior: smooth;
-    width: 80%;
-    max-width: 400px;
-    gap: 8px;
-  }
+.thumbnails {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  gap: 8px;
+  -webkit-overflow-scrolling: touch;
+}
 
-  .thumbnails img {
-    width: 60px;
-    height: 80px;
-    object-fit: cover;
-    border-radius: 8px;
-    cursor: pointer;
-    opacity: 0.6;
-    transition: transform 0.2s, opacity 0.2s;
-  }
+.thumbnails img {
+  scroll-snap-align: center;
+  flex-shrink: 0;
+  width: 60px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 8px;
+  cursor: pointer;
+  opacity: 0.6;
+  transition: transform 0.2s, opacity 0.2s;
+}
+.thumbnails img.active {
+  opacity: 1;
+  transform: scale(1.05);
+}
 
   .thumbnails img:hover,
   .thumbnails img.active {
@@ -266,25 +272,20 @@
     transform: scale(1.05);
   }
 
-  .thumb-btn {
-    background: none;
-    border: none;
-    font-size: 22px;
-    color: #999;
-    cursor: pointer;
-    transition: color 0.3s;
-  }
+.thumb-btn {
+  background: none;
+  border: none;
+  font-size: 22px;
+  color: #999;
+  cursor: pointer;
+  transition: color 0.3s;
+}
 
-  .thumb-btn:hover {
-    color: #333;
-  }
+.thumb-btn:hover { color: #333; }
 
-  @media (max-width: 480px) {
-    .thumbnails img {
-      width: 50px;
-      height: 65px;
-    }
-  }
+@media (max-width: 480px) {
+  .thumbnails img { width: 50px; height: 65px; }
+}
 
   /* Lightbox (전체화면 이미지 팝업) */
   .lightbox {
@@ -859,48 +860,49 @@
   const images = Array.from(document.querySelectorAll('.thumbnails img'));
 
   // 대표사진 변경
-  function changeMain(el) {
-    const main = document.getElementById('mainPhoto');
-    main.src = el.src;
-    document.querySelectorAll('.thumbnails img').forEach(img => img.classList.remove('active'));
-    el.classList.add('active');
-    currentIndex = images.indexOf(el);
-  }
+function changeMain(el) {
+  const main = document.getElementById('mainPhoto');
+  main.src = el.src;
+  document.querySelectorAll('.thumbnails img').forEach(img => img.classList.remove('active'));
+  el.classList.add('active');
+  currentIndex = images.indexOf(el);
+  // 모바일에서는 썸네일이 화면 가운데 오도록 스크롤
+  el.scrollIntoView({ behavior: 'smooth', inline: 'center' });
+}
 
   // 썸네일 좌우 이동
-  function scrollThumbnails(direction) {
-    const container = document.getElementById('thumbnails');
-    const scrollAmount = 200;
-    container.scrollBy({
-      left: direction * scrollAmount,
-      behavior: 'smooth'
-    });
-  }
-
+function scrollThumbnails(direction) {
+  const container = document.getElementById('thumbnails');
+  const scrollAmount = container.clientWidth * 0.6; // 화면 비율에 맞춰 이동
+  container.scrollBy({
+    left: direction * scrollAmount,
+    behavior: 'smooth'
+  });
+}
   // 라이트박스 열기
-  function openLightbox() {
-    const lightbox = document.getElementById('lightbox');
-    const lightboxImage = document.getElementById('lightboxImage');
-    const mainPhoto = document.getElementById('mainPhoto');
-    lightboxImage.src = mainPhoto.src;
-    lightbox.style.display = 'flex';
-  }
+function openLightbox() {
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImage = document.getElementById('lightboxImage');
+  lightboxImage.src = document.getElementById('mainPhoto').src;
+  lightbox.style.display = 'flex';
+}
+
 
   // 라이트박스 닫기
-  function closeLightbox() {
-    document.getElementById('lightbox').style.display = 'none';
-  }
+function closeLightbox() {
+  document.getElementById('lightbox').style.display = 'none';
+}
 
   // 라이트박스 내 이미지 이동
-  function navigateLightbox(direction, event) {
-    event.stopPropagation();
-    currentIndex += direction;
-    if (currentIndex < 0) currentIndex = images.length - 1;
-    if (currentIndex >= images.length) currentIndex = 0;
-    const lightboxImage = document.getElementById('lightboxImage');
-    lightboxImage.src = images[currentIndex].src;
-    changeMain(images[currentIndex]);
-  }
+function navigateLightbox(direction, event) {
+  event.stopPropagation();
+  currentIndex += direction;
+  if (currentIndex < 0) currentIndex = images.length - 1;
+  if (currentIndex >= images.length) currentIndex = 0;
+  const lightboxImage = document.getElementById('lightboxImage');
+  lightboxImage.src = images[currentIndex].src;
+  changeMain(images[currentIndex]);
+}
 
   // 첫 번째 썸네일 활성화
   document.addEventListener("DOMContentLoaded", () => {
@@ -921,3 +923,4 @@ function copyText(value) {
   alert("계좌번호가 복사되었습니다.");
 }
 </script>
+
