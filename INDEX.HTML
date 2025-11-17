@@ -393,6 +393,7 @@
       display: inline-block;
     }
     .naver {background-color: #03c75a;}
+    .forms {background-color: black;}
     .kakao {background-color: #fee500; color: #3c1e1e;}
     .contact-btns {
       display: flex;
@@ -456,45 +457,177 @@
       padding: 20px;
       margin-top: 40px;
     }
+    .account {
+  text-align: center;
+  padding: 20px 0;
+}
+
+.account-btn {
+  width: 100%;
+  padding: 14px 0;
+  margin-top: 12px;
+  border: 0;
+  border-radius: 12px;
+  background: #111;
+  color: #fff;
+  font-size: 17px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.account-btn:active {
+  transform: scale(0.97);
+}
+
+/* ───────── 모달 ───────── */
+.modal {
+  display: none; /* <-- 반드시 유지해야 함 */
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.55);
+  backdrop-filter: blur(4px);
+
+  /* flex는 스크립트에서 적용됨 */
+  justify-content: center;
+  align-items: center;
+}
+
+/* 모달 박스 */
+.modal-content {
+  background: #fff;
+  padding: 25px 22px;
+  width: 88%;
+  max-width: 420px;
+  border-radius: 18px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.18);
+  animation: fadeIn 0.25s ease;
+  text-align: center;
+}
+
+.close {
+  float: right;
+  font-size: 30px;
+  font-weight: 300;
+  cursor: pointer;
+  margin-top: -10px;
+}
+
+/* 제목 그룹 */
+.account-group-title {
+  font-size: 17px;
+  font-weight: 700;
+  margin: 18px 0 10px;
+  color: #333;
+  text-align: left;
+}
+
+/* 박스 */
+.account-box {
+  background: #fafafa;
+  border-radius: 12px;
+  padding: 15px;
+  margin-bottom: 14px;
+  border: 1px solid #e5e5e5;
+  text-align: left;
+}
+
+.account-box p {
+  margin: 4px 0;
+  font-size: 15px;
+}
+
+.acc-number {
+  font-size: 16px;
+  font-weight: 700;
+  margin-top: 3px;
+}
+
+/* 복사 버튼 */
+.copy-btn {
+  width: 100%;
+  margin-top: 10px;
+  padding: 10px 0;
+  border: none;
+  border-radius: 10px;
+  background: #eaeaea;
+  font-size: 15px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.copy-btn:active {
+  transform: scale(0.97);
+}
+
+/* 모달 애니메이션 */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
   </style>
 </head>
 <body>
 <div class="cover">
     <div class="title">02月28日</div>
   <div class="cover">
-    <img src="./photo/DAL00624.JPG" alt="커플사진">
+    <img src="./img file/main.jpg" alt="커플사진">
     <div class="names">오대호 ❤️ 이가원</div>
-    <div class="date">2025년 2월 28일 토요일 오후 12시<br> 호텔 나루 서울 엠갤러리 2층</div>
+    <div class="date">2026년 2월 28일 토요일 오후 12시<br> 호텔 나루 서울 엠갤러리 2층</div>
   </div>
 <HR>
   <section>
     <h2>이제 서로, 평생 함께</h2>
     <p>서로가 마주보며 다져온 사랑을<br>이제 한 곳을 바라보며 걸어가려 합니다.<br><br>
-    소중한 분들을 모시고 <BR>저희의 첫 시작을 함께 해주세요.</p>
+    축복의 자리에 귀한 걸음 하시어 <BR>저희의 새로운 시작을 함께해 주세요.</p>
   </section>
       <h1>Gallery</h1>
 <section class="gallery">
 
   <div class="main-image">
-    <img id="mainPhoto" src="./photo/photo1.jpg" alt="대표사진" onclick="openLightbox()">
+    <img id="mainPhoto" src="./img file/photo1.jpg" alt="대표사진" onclick="openLightbox()">
   </div>
 
   <div class="thumbnail-wrapper">
     <button class="thumb-btn prev" onclick="scrollThumbnails(-1)">&#10094;</button>
     <div class="thumbnails" id="thumbnails">
-      <img src="./photo/photo1.jpg" alt="썸네일1" onclick="changeMain(this)">
-      <img src="./photo/photo2.jpg" alt="썸네일2" onclick="changeMain(this)">
-      <img src="./photo/photo3.jpg" alt="썸네일3" onclick="changeMain(this)">
-      <img src="./photo/photo4.jpg" alt="썸네일4" onclick="changeMain(this)">
-      <img src="./photo/photo5.jpg" alt="썸네일5" onclick="changeMain(this)">
-      <img src="./photo/photo6.jpg" alt="썸네일6" onclick="changeMain(this)">
-      <img src="./photo/photo7.jpg" alt="썸네일7" onclick="changeMain(this)">
-      <img src="./photo/photo8.jpg" alt="썸네일8" onclick="changeMain(this)">
-      <img src="./photo/photo9.jpg" alt="썸네일9" onclick="changeMain(this)">
-      <img src="./photo/photo10.jpg" alt="썸네일10" onclick="changeMain(this)">
-      <img src="./photo/photo11.jpg" alt="썸네일11" onclick="changeMain(this)">
-      <img src="./photo/photo12.jpg" alt="썸네일12" onclick="changeMain(this)">
-      <img src="./photo/photo13.jpg" alt="썸네일13" onclick="changeMain(this)">
+      <img src="./img file/photo1.jpg" alt="썸네일1" onclick="changeMain(this)">
+      <img src="./img file/photo2.jpg" alt="썸네일2" onclick="changeMain(this)">
+      <img src="./img file/photo3.jpg" alt="썸네일3" onclick="changeMain(this)">
+      <img src="./img file/photo4.jpg" alt="썸네일4" onclick="changeMain(this)">
+      <img src="./img file/photo5.jpg" alt="썸네일5" onclick="changeMain(this)">
+      <img src="./img file/photo6.jpg" alt="썸네일6" onclick="changeMain(this)">
+      <img src="./img file/photo7.jpg" alt="썸네일7" onclick="changeMain(this)">
+      <img src="./img file/photo8.jpg" alt="썸네일8" onclick="changeMain(this)">
+      <img src="./img file/photo9.jpg" alt="썸네일9" onclick="changeMain(this)">
+      <img src="./img file/photo10.jpg" alt="썸네일10" onclick="changeMain(this)">
+      <img src="./img file/photo11.jpg" alt="썸네일11" onclick="changeMain(this)">
+      <img src="./img file/photo12.jpg" alt="썸네일12" onclick="changeMain(this)">
+      <img src="./img file/photo13.jpg" alt="썸네일13" onclick="changeMain(this)">
+      <img src="./img file/photo14.jpg" alt="썸네일13" onclick="changeMain(this)">
+      <img src="./img file/photo15.jpg" alt="썸네일13" onclick="changeMain(this)">
+      <img src="./img file/photo16.jpg" alt="썸네일13" onclick="changeMain(this)">
+      <img src="./img file/photo17.jpg" alt="썸네일13" onclick="changeMain(this)">
+      <img src="./img file/photo18.jpg" alt="썸네일13" onclick="changeMain(this)">
+      <img src="./img file/photo19.jpg" alt="썸네일13" onclick="changeMain(this)">
+      <img src="./img file/photo20.jpg" alt="썸네일13" onclick="changeMain(this)">
+      <img src="./img file/photo21.jpg" alt="썸네일13" onclick="changeMain(this)">
+      <img src="./img file/photo22.jpg" alt="썸네일13" onclick="changeMain(this)">
+      <img src="./img file/photo23.jpg" alt="썸네일13" onclick="changeMain(this)">
+      <img src="./img file/photo24.jpg" alt="썸네일13" onclick="changeMain(this)">
+      <img src="./img file/photo25.jpg" alt="썸네일13" onclick="changeMain(this)">
+      <img src="./img file/photo26.jpg" alt="썸네일13" onclick="changeMain(this)">
+      <img src="./img file/photo27.jpg" alt="썸네일13" onclick="changeMain(this)">
+      <img src="./img file/photo28.jpg" alt="썸네일13" onclick="changeMain(this)">
+      <img src="./img file/photo29.jpg" alt="썸네일13" onclick="changeMain(this)">
+      <img src="./img file/photo30.jpg" alt="썸네일13" onclick="changeMain(this)">
+      <img src="./img file/photo31.jpg" alt="썸네일13" onclick="changeMain(this)">
+
+      <img src="./img file/photo32.jpg" alt="썸네일13" onclick="changeMain(this)">
     </div>
     <button class="thumb-btn next" onclick="scrollThumbnails(1)">&#10095;</button>
   </div>
@@ -511,7 +644,7 @@
   <section>
     <div class="calendar">
       <h3>예식 일정</h3>
-      <div class="date-text">2025년 2월 28일 (토) 오후 12시</div>
+      <div class="date-text">2026년 2월 28일 (토) 오후 12시</div>
     </div>
 <div class="calendar-section">
   <div class="calendar-box">
@@ -546,15 +679,19 @@
           <a class="btn kakao" target="_blank"
             href="https://map.kakao.com/link/to/호텔나루서울엠갤러리,37.526016,126.992560">카카오 길찾기</a>
         </div>          
+        <div style="text-align: left;">지하철 안내    
+        <p>5호선 마포역 4번 출구에서 290m <br>도보 5분 거리</p></div>    
+            <div style="text-align: left;">주치 안내    
+        <p>호텔 내 무료 발렛 서비스 이용 가능</p></div>    
 </div>
       <section><h1>연락처</h1>
     <div class="contact-btns">
       신랑에게 연락하기
       <div class="icons">
-        <a href="tel:010127005308" class="icon call-blue">
+        <a href="tel:01027005308" class="icon call-blue">
           <img src="https://cdn-icons-png.flaticon.com/512/724/724664.png" alt="전화">
         </a>
-        <a href="sms:010127005308" class="icon msg-gray">
+        <a href="sms:01027005308" class="icon msg-gray">
           <img src="https://cdn-icons-png.flaticon.com/512/2462/2462719.png" alt="문자">
         </a>
       </div>
@@ -580,10 +717,10 @@
       <div class="role">아버지</div>
       <div class="name">오정석</div>
       <div class="icons">
-        <a href="tel:0103769508" class="icon call-blue">
+        <a href="tel:01037695308" class="icon call-blue">
           <img src="https://cdn-icons-png.flaticon.com/512/724/724664.png" alt="전화">
         </a>
-        <a href="sms:0103769508" class="icon msg-gray">
+        <a href="sms:01037695308" class="icon msg-gray">
           <img src="https://cdn-icons-png.flaticon.com/512/2462/2462719.png" alt="문자">
         </a>
       </div>
@@ -622,13 +759,94 @@
   </div>
 </section>
 
-  <section>
-    <div class="account">
-      <h3>마음 전하실 곳</h3>
-      <p>신랑 오대호 <br> 국민은행 3333-00-0000000</p>
-      <p>신부 이가원 <br> 국민은행 123-4567-8901</p>
+<section>
+  <div class="account">
+    <h3>마음 전하실 곳</h3>
+
+    <!-- 신랑측 버튼 -->
+    <button class="account-btn" onclick="openModal('groomModal')">
+      신랑측에게 마음 전하기
+    </button>
+
+    <!-- 신부측 버튼 -->
+    <button class="account-btn" onclick="openModal('brideModal')">
+      신부측에게 마음 전하기
+    </button>
+  </div>
+</section>
+<!-- =======================
+      🔹 신랑측 모달
+======================= -->
+<div id="groomModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('groomModal')">&times;</span>
+    <h3>신랑측 계좌</h3>
+
+    <!-- 혼주 -->
+    <div class="account-group-title">혼주 계좌</div>
+
+    <div class="account-box">
+      <p><strong>아버님</strong></p>
+      <p>KB국민 (예금주: 오정석)</p>
+      <p class="acc-number">02724-03-73093</p>
+      <button class="copy-btn" onclick="copyText('027240373093')">계좌번호 복사</button>
     </div>
-  </section>
+
+    <!-- 신랑 -->
+    <div class="account-group-title">신랑 계좌</div>
+
+    <div class="account-box">
+      <p>KB국민 (예금주: 오대호)</p>
+      <p class="acc-number">053602-04-206251</p>
+      <button class="copy-btn" onclick="copyText('05360204206251')">계좌번호 복사</button>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- =======================
+      🔹 신부측 모달 (업데이트)
+======================= -->
+<div id="brideModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('brideModal')">&times;</span>
+    <h3>신부측 계좌</h3>
+
+    <!-- 혼주 -->
+    <div class="account-group-title">혼주 계좌</div>
+
+    <div class="account-box">
+      <p><strong>아버님</strong></p>
+      <p>신한은행 (예금주: 이영우)</p>
+      <p class="acc-number">602-04-455295</p>
+      <button class="copy-btn" onclick="copyText('60204455295')">계좌번호 복사</button>
+    </div>
+
+    <div class="account-box">
+      <p><strong>어머님</strong></p>
+      <p>우리은행 (예금주: 남서영)</p>
+      <p class="acc-number">331-183350-02-001</p>
+      <button class="copy-btn" onclick="copyText('33118335002001')">계좌번호 복사</button>
+    </div>
+
+    <!-- 신부 -->
+    <div class="account-group-title">신부 계좌</div>
+
+    <div class="account-box">
+      <p>하나은행 (예금주: 이가원)</p>
+      <p class="acc-number">412-910616-53807</p>
+      <button class="copy-btn" onclick="copyText('41291061653807')">계좌번호 복사</button>
+    </div>
+  </div>
+</div>
+<section>
+    <h2>참석 여부 전달</h2>
+    <P>축하하는 마음으로 참석해주시는 <BR>한 분 한 분
+    귀한 마음으로 모실 수 있도록<BR>
+    부담없이 알려주시면 <BR>정성을 다해 준비하겠습니다.</P><br>
+          <a class="btn forms" target="_blank"
+        href="https://docs.google.com/forms/d/e/1FAIpQLSfdIqXxTsbvdxIrqFYMIcaDH6TmP2vdmgzLlbPBLBoMMQbSOg/viewform?usp=dialog">참석 의사 전달하기</a></section>
 
   <footer>
     © 2025 오대호 & 이가원 결혼식에 초대합니다.
@@ -689,4 +907,17 @@
     const firstThumb = document.querySelector(".thumbnails img");
     if (firstThumb) firstThumb.classList.add("active");
   });
+
+function openModal(id) {
+  const modal = document.getElementById(id);
+  modal.style.display = "flex";   // flex로 변경
+}
+function closeModal(id) {
+  document.getElementById(id).style.display = "none";
+}
+
+function copyText(value) {
+  navigator.clipboard.writeText(value);
+  alert("계좌번호가 복사되었습니다.");
+}
 </script>
